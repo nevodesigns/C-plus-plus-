@@ -2,6 +2,25 @@
 #include <string>
 #include <array>
 #include <vector>
+
+void modifyArray(std::array<double, 3> &arr){
+    arr[0]=2.5;
+    arr[1]=43.2;
+    arr[2]=32.4;
+}
+
+void modifyVector(std::vector<double> &data){
+    data.push_back(4.6);
+    data.push_back(5.7);
+    data.push_back(6.8);
+}
+
+void printVector(const std::vector<double> &data){
+    for (const double &value : data){
+        std::cout<<"Value "<<value<<std::endl;
+    }
+}
+
 int main()
 {
 
@@ -104,8 +123,45 @@ std::cout<<"Data capacity after clearing: "<<data.capacity()<<std::endl;
 data.shrink_to_fit();
 std::cout<<"Data capacity after shrinking: "<<data.capacity()<<std::endl;
 //now i should expect th capacity to be zero bcuz the shrink to fit operation happens in a way that it shrinks the capacityy to match the 
-//current size of the vector in this case since i hv cleared the vector the size is zero and our shrink to fit will be zero
+//current size of the vector in this case since i hv cleared the vector the size is zero and our shrink to fit will be zero.
 
-    
-    return 0;
+
+
+ // vectors can also be passed by reference or by value in the same way as arrays, so if we want to modify the values of the vector inside the function we can pass the vector by reference like this
+// so we can pass by reference using the & operator and we can pass by value by simply not usingthe & operator 
+// so for example if we have a function that takes an array as a parameter and we want to modifythe values ofthe array insidethe function we can passthe array by reference like this
+//thearray modification is atthe top
+//so in this casewe are passingthearraybyreferenceusingthe&operatorand anychanges made tothearray insidethefunction will affecttheoriginalarray outsidethe
+//function
+//so we can callthefunction like this
+
+
+modifyArray(IMU);
+std::cout<<"values ofthearray after modifyingit usingthefunction"<<std::endl;
+for(double& value : IMU){
+    std::cout<<"Value "<<value<<std::endl;
+}
+
+
+
+for(double &Data : data){
+    std::cout<<"Data "<<Data<<std::endl;
+
+}
+
+
+std::cout<<"print original vctors"<<std::endl;
+for (double &Data : data){
+    std::cout<<"Data "<<Data<<std::endl;
+
+}// remeber i already cleared the vector data
+if(data.empty()){std::cout<<"empty vector"<<std::endl;}
+
+// i wrote a function to edit vectors check it at the beginnig of the code
+modifyVector(data);
+
+std::cout<<"values of the vector after modifying it using the function"<<std::endl;
+printVector(data);
+
+return 0;
 }

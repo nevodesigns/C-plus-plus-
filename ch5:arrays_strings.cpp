@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <array>
+#include <vector>
 int main()
 {
 
@@ -64,20 +65,46 @@ std::cout<<"i just modified the values of arrays using index"<<std::endl;
     }
 
 
+// moving on to vectors
+ /// we can create an empty vector for now
+  std::vector<double>data;
+
+  // so we can add values to the vector
+   data.push_back(1.2);
+   data.push_back(2.3);
+    data.push_back(3.4);
+std::cout<<"data front value: "<<data.front()<<std::endl;
+std::cout<<"data back value: "<<data.back()<<std::endl;
+std::cout<<"data size: "<<data.size()<<std::endl;
+std::cout<<"data capacity: "<<data.capacity()<<std::endl; // this returns the total num of elements a vector can hold
+std::cout<<"i will be clearing the data inside:" <<std::endl;
+data.clear();
+std::cout<<"data has been cleared"<< std::endl;
 
 
+    if (data.empty()){
+        std::cout<<"Data is empty"<<std::endl;
+    }else{
+        std::cout<<"Data is not empty"<<std::endl;
+    
+// iterating through vectors
+for (double &Data : data){
+    std::cout<<"Data "<<Data<<std::endl;
 
+}}
 
+// so let me recheck the size
+std::cout<<"Data size after clearing: "<<data.size()<<std::endl;
+std::cout<<"Data capacity after clearing: "<<data.capacity()<<std::endl;
 
-
-
-
-
-
-
-
-
-
+// so guys i noticed something after i did data.capacity after clearing it gave me a valu of 4
+// which is not so although i found out that because i had  values stored there before so it dynamically took a value of 4 
+// that doesnt mean that it will always be 4 it can be more or less depending on how many values you have stored in the vector before clearing it
+// so basically the capacity of a vector is not reduced when you clear it, it only reduces the size of the vector to 0 but the capacity remains the same but can still increase if you add more values to the vector after clearing it but it will not decrease unless you use the shrink_to_fit() method to reduce the capacity of the vector to fit the size of the vector which is 0 in this case
+data.shrink_to_fit();
+std::cout<<"Data capacity after shrinking: "<<data.capacity()<<std::endl;
+//now i should expect th capacity to be zero bcuz the shrink to fit operation happens in a way that it shrinks the capacityy to match the 
+//current size of the vector in this case since i hv cleared the vector the size is zero and our shrink to fit will be zero
 
     
     return 0;

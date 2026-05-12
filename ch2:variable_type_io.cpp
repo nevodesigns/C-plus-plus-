@@ -95,7 +95,8 @@ int main(){
     std::cout<<"your robot name is  "<<robot_name<<"and it has a robot point of "<<robot_pt<<std::endl;
     // also i learnt that getline only works with strings
     std::cin.ignore();
-    //std::cin>>robot_pt grabs the 25 but leaves the \n sitting in the buffer. It doesn't clean up after itself.
+    //std::cin>>robot_pt grabs the value passed from the input 
+    //but leaves the \n sitting in the buffer. It doesn't clean up after itself.
     //When getline runs next, it looks at the buffer and immediately sees that leftover \n and says "oh, 
     //the user already pressed Enter, I'm done" and returns an empty string without even waiting for you to type anything.
 

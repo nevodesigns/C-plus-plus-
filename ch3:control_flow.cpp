@@ -124,5 +124,8 @@ std::vector<double> sonar_readings={2.5, 1.8, 0.4, 3.0, 0.2, 1.1};
             std::cout<<"road is cler at "<<reading<<"m"<<std::endl;
         }
     }
+
+
+    
     return 0;
 }

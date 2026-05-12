@@ -36,4 +36,4 @@ std::cout<<"number of times battery was at a critical state "<<critical_count<<s
 
 
 
-}
+} 

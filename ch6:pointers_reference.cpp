@@ -1,8 +1,20 @@
 #include<iostream>
+#include<string>
+
+
+//using a ptr to modify the original value
+void modify_ptr(int* ptr){
+    *ptr=*ptr*2; // this will dereference the ptr and change the value of distance to 64
+
+   // *ptr=100;
+}
 
 
 
-
+//alsough we can use reference to modify the original value
+void modif_ref(int& ref){
+    ref=ref*2; // this will also change the value of distance to 128
+}
 int main(){
 
     int speed{42}; // so this doesnt just create a value it reserves 4 byts of RAM and assigns the value 42
@@ -54,7 +66,7 @@ int main(){
     
     
 // moving on to nullptr
-int* part{{nullptr}};// the pointer exist but points to mothing
+int* part{nullptr};// the pointer exist but points to mothing
 // it is safe practice to always check before dereferencing an unknown pointer
 if(part==nullptr){ 
     std::cout<<"part is a null pointer"<<std::endl; }
@@ -64,7 +76,30 @@ if(part==nullptr){
 
 
 
+// so we can also have pointer to pointer
+int** ptrptr{&ptr}; // this is a pointer to a pointer, it points to the address of ptr which in turn points to the address of distance
+std::cout<<"ptrptr: "<<ptrptr<<std::endl;
+std::cout<<"dereferencing ptrptr: "<<*ptrptr<<std::endl;
+// normally you hv to do **ptrptr to get the value bcuz *ptrptr only gets the address for a ptr thaat points to another pointer
+// also i dont see the use of pointer to pointer but it is used in some cases like dynamic memory allocation and when you want to pass a pointer to a function and modify the pointer itself
 
+/*i moved the below function to the top to avoid error of undeclared function
+using a ptr to modify the original value
+void modify_ptr(int* ptr){
+    *ptr=*ptr*2; // this will dereference the ptr and change the value of distance to 64
+
+   // *ptr=100;
+}*/
+
+/*alsough we can use reference to modify the original value
+void modif_ref(int& ref){
+    ref=ref*2; // this will also change the value of distance to 128
+}*/
+
+modify_ptr(ptr);
+std::cout<<"distance after modify_ptr: "<<distance<<std::endl;
+modif_ref(*ptr);
+std::cout<<"distance after modif_ref: "<<distance<<std::endl;
 
     
     return 0;

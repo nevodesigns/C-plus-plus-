@@ -29,7 +29,8 @@ int main(){
     int velocity{200};
     int slow{10};
     int& vel{velocity};
-    vel=slow; // this will change the value of velocity to 300
+    vel=slow; // this will change the value of velocity to 10 but vel will still point to velocity and not slow
+
     std::cout<<"velocity value: "<<velocity<<std::endl;
     std::cout<<"slow value: "<<slow<<std::endl;
     std::cout<<"vel value: "<<vel<<std::endl;
@@ -52,6 +53,19 @@ int main(){
     std::cout<<"address of distance: "<<&distance<<std::endl;   
     
     
+// moving on to nullptr
+int* part{{nullptr}};// the pointer exist but points to mothing
+// it is safe practice to always check before dereferencing an unknown pointer
+if(part==nullptr){ 
+    std::cout<<"part is a null pointer"<<std::endl; }
+    else{
+        std::cout<<"part is not a null pointer "<<*ptr<<std::endl;
+    }
+
+
+
+
+
     
     return 0;
 }

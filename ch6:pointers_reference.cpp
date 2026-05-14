@@ -96,11 +96,46 @@ void modif_ref(int& ref){
     ref=ref*2; // this will also change the value of distance to 128
 }*/
 
-modify_ptr(ptr);
+int val{10};
+
+modify_ptr(&val);
 std::cout<<"distance after modify_ptr: "<<distance<<std::endl;
-modif_ref(*ptr);
+modif_ref(val);
 std::cout<<"distance after modif_ref: "<<distance<<std::endl;
 
     
+
+//const pointers
+
+//pointer to a constant data type in the below case int
+const int*pi{&val};
+ *pi{20};// this is an error because it has a constant datatype  meaning we cant change the value
+ // but we can point to another varible
+ pi=&distance;  // this now points to the variable called distance
+std::cout<<pi<<std::endl;
+
+
+ // when the pointer itself is constant and the datatype is not constant
+ int* const p2{&val};
+ *p2=222;// so we can dereference this and assign it a new value
+p2=&distance; // this is an rror bcuz for constant pointer you cannot change what you are pointing to
+
+
+//constant pointer and constant datatype
+const int* const p4{&distance};
+p4=&val;// this will cause an error obviously you know why 
+*p4=22; // this will also cause an error if you have been following me you will know why
+
+
+
+
+
+
+
+
+
+
+
+
     return 0;
 }
